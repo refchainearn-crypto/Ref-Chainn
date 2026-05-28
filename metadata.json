@@ -1,0 +1,6 @@
+{
+  "name": "RefChain",
+  "description": "Premium secure fintech-style multi-level referral rewards and wallet platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

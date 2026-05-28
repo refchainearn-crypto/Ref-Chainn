@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Redefine slate gray colors dynamically to give a premium GitHub-style dark aesthetic */
+  --color-slate-950: #0A0C10; /* Outer main layout background */
+  --color-slate-900: #0D1117; /* Sidebars, headers, key structures background */
+  --color-slate-800: #30363D; /* Custom sleek borders */
+  --color-slate-700: #444c56; /* Hover state borders */
+  --color-slate-600: #768390; /* Soft text description colors */
+  --color-gray-200: #30363D;   /* Map light mode borders in dark mode standard as well */
+  --color-emerald-500: #10b981; /* High contrast emerald accent colors */
+  --color-emerald-600: #059669; /* Hover contrast emerald */
+}
+
+/* Base resets & layout tweaks to match the theme style */
+html, body {
+  background-color: #0A0C10 !important;
+  color: #c9d1d9 !important;
+  font-family: "Inter", "Space Grotesk", sans-serif;
+  margin: 0;
+  height: 100%;
+}
+
+/* Ensure headings utilize elegant Space Grotesk tracking styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Space Grotesk", "Inter", sans-serif !important;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Override all dark card variants to render standard Github-dark style backgrounds */
+.bg-slate-900\/20,
+.bg-slate-900\/35,
+.bg-slate-900\/40,
+.bg-slate-900\/50,
+.bg-slate-900\/30,
+.bg-slate-900\/90 {
+  background-color: #161B22 !important;
+}
+
+/* Overriding panel lists or active background configurations */
+.bg-slate-950\/80,
+.bg-slate-950\/90,
+.bg-slate-950 {
+  background-color: #0A0C10 !important;
+}
+
+/* Custom cards border elements */
+.border,
+.border-b,
+.border-t,
+.border-r,
+.border-l,
+.border-slate-800,
+.dark\:border-slate-800,
+.border-gray-200,
+.border-gray-250 {
+  border-color: #30363D !important;
+}
+
+/* Fix active state list items font sizing and coloring inside admin and user panels */
+.bg-slate-800 {
+  background-color: #30363D !important;
+  color: #10b981 !important;
+}
+
+/* Clean input forms */
+input, textarea, select {
+  background-color: #0D1117 !important;
+  border: 1px solid #30363D !important;
+  color: #f0f6fc !important;
+  font-size: 13px !important;
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #10b981 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15) !important;
+}
+
+/* Style table items to be flawless and unified */
+thead {
+  background-color: #0D1117 !important;
+  border-bottom: 2px solid #30363D !important;
+}
+
+thead th {
+  color: #8b949e !important;
+  font-weight: 600 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+tbody tr {
+  border-bottom: 1px solid #21262d !important;
+  transition: background-color 0.15s ease-in-out;
+}
+
+tbody tr:hover {
+  background-color: rgba(48, 54, 61, 0.15) !important;
+}
+
+td {
+  color: #c9d1d9 !important;
+}
+
+/* Uniform Buttons matching the Sophisticated Dark high density */
+button:not([disabled]) {
+  cursor: pointer;
+}
+
+/* Custom scrollbars for dashboard fluidity */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0C10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #21262d;
+  border-radius: 6px;
+  border: 2px solid #0A0C10;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8b949e;
+}

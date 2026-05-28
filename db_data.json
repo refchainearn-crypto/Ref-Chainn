@@ -1,0 +1,316 @@
+{
+  "config": {
+    "minDeposit": 500,
+    "minWithdrawal": 750,
+    "directCommissionPercent": 40,
+    "indirectCommissionPercent": 10,
+    "adminBalance": 1250000,
+    "bankDetails": {
+      "bankName": "Everest Bank Limited",
+      "accountName": "RefChain Tech Nepal Solutions",
+      "accountNumber": "00110022334455",
+      "branch": "New Baneshwor, Kathmandu"
+    },
+    "esewaDetails": {
+      "phone": "9801234567",
+      "name": "RefChain Merchant eSewa"
+    },
+    "khaltiDetails": {
+      "phone": "9851234567",
+      "name": "RefChain Merchant Khalti"
+    },
+    "binanceDetails": {
+      "walletAddress": "0x7a69bE1700681CD7BEfDCe832Aca414b4344CEe9",
+      "network": "Binance Smart Chain (BEP20)",
+      "name": "RefChain Corporate Wallet"
+    },
+    "supportContact": {
+      "whatsapp": "https://wa.me/9779800000000",
+      "email": "support@refchain.io",
+      "phone": "+977-1-4433221"
+    },
+    "qrImages": {
+      "esewaQr": "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?q=80&w=260&auto=format&fit=crop",
+      "khaltiQr": "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?q=80&w=260&auto=format&fit=crop",
+      "bankQr": "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?q=80&w=260&auto=format&fit=crop",
+      "binanceQr": "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?q=80&w=260&auto=format&fit=crop"
+    }
+  },
+  "users": [
+    {
+      "id": "admin-user",
+      "fullName": "RefChain Master Admin",
+      "email": "refchain.earn@gmail.com",
+      "phoneCode": "+977",
+      "phoneNumber": "9812345678",
+      "whatsappNumber": "9812345678",
+      "referralCode": "ADMINREF",
+      "role": "Admin",
+      "walletBalance": 0,
+      "totalEarnings": 0,
+      "directReferralsCount": 0,
+      "indirectReferralsCount": 0,
+      "accountStatus": "Active",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "consentTracked": true
+    },
+    {
+      "id": "user-a",
+      "fullName": "Anil Sharma",
+      "email": "anil@refchain.io",
+      "phoneCode": "+977",
+      "phoneNumber": "9801111111",
+      "whatsappNumber": "9801111111",
+      "referralCode": "ANIL77",
+      "referredBy": "ADMINREF",
+      "role": "User",
+      "walletBalance": 0,
+      "totalEarnings": 0,
+      "directReferralsCount": 1,
+      "indirectReferralsCount": 1,
+      "accountStatus": "Active",
+      "createdAt": "2026-05-10T12:00:00.000Z",
+      "consentTracked": true
+    },
+    {
+      "id": "user-b",
+      "fullName": "Binod Karki",
+      "email": "binod@refchain.io",
+      "phoneCode": "+977",
+      "phoneNumber": "9802222222",
+      "whatsappNumber": "9802222222",
+      "referralCode": "BINOD22",
+      "referredBy": "ANIL77",
+      "role": "User",
+      "walletBalance": 0,
+      "totalEarnings": 0,
+      "directReferralsCount": 1,
+      "indirectReferralsCount": 0,
+      "accountStatus": "Active",
+      "createdAt": "2026-05-15T09:30:00.000Z",
+      "consentTracked": true
+    },
+    {
+      "id": "user-c",
+      "fullName": "Chetana Thapa",
+      "email": "chetana@refchain.io",
+      "phoneCode": "+977",
+      "phoneNumber": "9803333333",
+      "whatsappNumber": "9803333333",
+      "referralCode": "CHETANA33",
+      "referredBy": "BINOD22",
+      "role": "User",
+      "walletBalance": 0,
+      "totalEarnings": 0,
+      "directReferralsCount": 0,
+      "indirectReferralsCount": 0,
+      "accountStatus": "Active",
+      "createdAt": "2026-05-20T15:45:00.000Z",
+      "consentTracked": true
+    }
+  ],
+  "deposits": [
+    {
+      "id": "DEP-101",
+      "userId": "user-a",
+      "userName": "Anil Sharma",
+      "amount": 50000,
+      "method": "Bank Transfer",
+      "transactionId": "TRX-EBL-993821",
+      "screenshot": "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=400&auto=format&fit=crop",
+      "status": "Approved",
+      "createdAt": "2026-05-11T10:00:00.000Z",
+      "updatedAt": "2026-05-11T10:30:00.000Z"
+    },
+    {
+      "id": "DEP-102",
+      "userId": "user-b",
+      "userName": "Binod Karki",
+      "amount": 100000,
+      "method": "eSewa",
+      "transactionId": "TRX-ESEWA-877215",
+      "screenshot": "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=400&auto=format&fit=crop",
+      "status": "Approved",
+      "createdAt": "2026-05-16T11:00:00.000Z",
+      "updatedAt": "2026-05-16T11:15:00.000Z"
+    },
+    {
+      "id": "DEP-103",
+      "userId": "user-c",
+      "userName": "Chetana Thapa",
+      "amount": 30000,
+      "method": "Khalti",
+      "transactionId": "TRX-KHALTI-112204",
+      "screenshot": "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=400&auto=format&fit=crop",
+      "status": "Approved",
+      "createdAt": "2026-05-21T08:00:00.000Z",
+      "updatedAt": "2026-05-21T08:20:00.000Z"
+    },
+    {
+      "id": "DEP-3879",
+      "userId": "user-a",
+      "userName": "Anil Sharma",
+      "amount": 5000,
+      "method": "eSewa",
+      "transactionId": "dfbdf",
+      "screenshot": "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=400&auto=format&fit=crop",
+      "status": "Pending",
+      "createdAt": "2026-05-28T07:21:53.667Z"
+    }
+  ],
+  "withdrawals": [
+    {
+      "id": "WITH-201",
+      "userId": "user-b",
+      "userName": "Binod Karki",
+      "amount": 16000,
+      "method": "eSewa",
+      "walletDetails": "eSewa ID Details: 9802222222",
+      "status": "Completed",
+      "riskScore": 5,
+      "createdAt": "2026-05-18T14:00:00.000Z",
+      "updatedAt": "2026-05-18T15:00:00.000Z"
+    },
+    {
+      "id": "WITH-202",
+      "userId": "user-c",
+      "userName": "Chetana Thapa",
+      "amount": 3000,
+      "method": "Binance / Crypto",
+      "walletDetails": "USDT BEP20 Wallet Address: 0x99238127391abc812fde",
+      "status": "Pending",
+      "riskScore": 12,
+      "createdAt": "2026-05-27T10:00:00.000Z"
+    },
+    {
+      "id": "WITH-6112",
+      "userId": "user-a",
+      "userName": "Anil Sharma",
+      "amount": 500,
+      "method": "eSewa",
+      "walletDetails": "hhtdfuyd",
+      "status": "Pending",
+      "riskScore": 5,
+      "createdAt": "2026-05-28T07:22:55.089Z"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TX-001",
+      "userId": "user-a",
+      "userName": "Anil Sharma",
+      "type": "Deposit",
+      "amount": 50000,
+      "status": "Completed",
+      "description": "NPR 50000 Bank Deposit Approved",
+      "createdAt": "2026-05-11T10:30:00.000Z"
+    },
+    {
+      "id": "TX-002",
+      "userId": "user-b",
+      "userName": "Binod Karki",
+      "type": "Deposit",
+      "amount": 100000,
+      "status": "Completed",
+      "description": "NPR 100000 eSewa Deposit Approved",
+      "createdAt": "2026-05-16T11:15:00.000Z"
+    },
+    {
+      "id": "TX-003",
+      "userId": "user-a",
+      "userName": "Anil Sharma",
+      "type": "Direct Referral Commission",
+      "amount": 40000,
+      "status": "Completed",
+      "description": "40% Direct Commission from Binod Karki (DEP-102)",
+      "createdAt": "2026-05-16T11:15:00.000Z"
+    },
+    {
+      "id": "TX-004",
+      "userId": "user-c",
+      "userName": "Chetana Thapa",
+      "type": "Deposit",
+      "amount": 30000,
+      "status": "Completed",
+      "description": "NPR 30000 Khalti Deposit Approved",
+      "createdAt": "2026-05-21T08:20:00.000Z"
+    },
+    {
+      "id": "TX-005",
+      "userId": "user-b",
+      "userName": "Binod Karki",
+      "type": "Direct Referral Commission",
+      "amount": 12000,
+      "status": "Completed",
+      "description": "40% Direct Commission from Chetana Thapa (DEP-103)",
+      "createdAt": "2026-05-21T08:20:00.000Z"
+    },
+    {
+      "id": "TX-006",
+      "userId": "user-a",
+      "userName": "Anil Sharma",
+      "type": "Indirect Referral Commission",
+      "amount": 3000,
+      "status": "Completed",
+      "description": "10% Indirect Commission from Chetana Thapa through Binod (DEP-103)",
+      "createdAt": "2026-05-21T08:20:00.000Z"
+    },
+    {
+      "id": "TX-45985",
+      "userId": "user-a",
+      "userName": "Anil Sharma",
+      "type": "Withdrawal",
+      "amount": 500,
+      "status": "Pending",
+      "description": "Withdrawal request submitted (Hold 500 NPR)",
+      "createdAt": "2026-05-28T07:22:55.089Z"
+    }
+  ],
+  "tickets": [
+    {
+      "id": "TKT-501",
+      "userId": "user-c",
+      "userName": "Chetana Thapa",
+      "subject": "Referral Commission Questions",
+      "category": "Referral Mission",
+      "priority": "Medium",
+      "status": "Open",
+      "createdAt": "2026-05-26T09:00:00.000Z",
+      "messages": [
+        {
+          "id": "msg-1",
+          "sender": "User",
+          "message": "How long does indirect referral take to register in the dashboard balances?",
+          "createdAt": "2026-05-26T09:00:00.000Z"
+        }
+      ]
+    }
+  ],
+  "alerts": [
+    {
+      "id": "ALD-901",
+      "userId": "user-b",
+      "userName": "Binod Karki",
+      "type": "Duplicate Phone Number",
+      "severity": "Medium",
+      "details": "User has a whatsapp number matching within registered system range or similar structures.",
+      "status": "Active",
+      "createdAt": "2026-05-15T09:40:00.000Z"
+    }
+  ],
+  "announcements": [
+    {
+      "id": "ANN-301",
+      "title": "eSewa QR Code Updated",
+      "content": "Please check the updated eSewa QR code for deposit security. All deposits require the verified official merchant proof upload.",
+      "createdAt": "2026-05-25T14:20:00Z"
+    }
+  ],
+  "passwordHashes": {
+    "refchain.earn@gmail.com": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+    "anil@refchain.io": "577e1ad5d48123667d6272f2e026e119d8d9391f6fd28ab08944b87a12e41a68",
+    "binod@refchain.io": "37631f4ca4837e4f9f2a0ea5163d5bc8cb42817a95ff6750b1e4dcf9c4cc7f37",
+    "chetana@refchain.io": "ed5eb48e4eef4e2bd509dd10381a14aaac2f219feb4bac99517cb2f9f73c0bc1"
+  },
+  "passwordRecoveries": []
+}
