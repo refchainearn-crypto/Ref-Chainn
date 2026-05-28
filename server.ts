@@ -634,9 +634,12 @@ async function startServer() {
     }
   });
 
-  // Client Deposits: get personal deposits or create
+  // Client Deposits: get personal deposits (or all deposits for Admin) or create
   app.get("/api/deposits/me", authenticateToken, (req: any, res) => {
     const db = getDB();
+    if (req.user.role === "Admin") {
+      return res.json(db.deposits);
+    }
     const userDeps = db.deposits.filter((d: Deposit) => d.userId === req.user.id);
     res.json(userDeps);
   });
@@ -688,9 +691,12 @@ async function startServer() {
     }
   });
 
-  // Client Withdrawals: get personal withdrawals or request
+  // Client Withdrawals: get personal withdrawals (or all withdrawals for Admin) or request
   app.get("/api/withdrawals/me", authenticateToken, (req: any, res) => {
     const db = getDB();
+    if (req.user.role === "Admin") {
+      return res.json(db.withdrawals);
+    }
     const userWiths = db.withdrawals.filter((w: Withdrawal) => w.userId === req.user.id);
     res.json(userWiths);
   });
@@ -708,8 +714,8 @@ async function startServer() {
         return res.status(400).json({ error: `Minimum withdrawal is NPR ${db.config.minWithdrawal}` });
       }
 
-      if (user.walletBalance < numAmount) {
-        return res.status(400).json({ error: "Insufficient wallet balance to request withdrawal." });
+      if (user.walletBalance - 500 < numAmount) {
+        return res.status(400).json({ error: `The first NPR 500 deposited/invested is locked in the pyramid system and cannot be withdrawn. Your maximum withdrawable balance is NPR ${Math.max(0, user.walletBalance - 500).toLocaleString()}.` });
       }
 
       if (!walletDetails) {

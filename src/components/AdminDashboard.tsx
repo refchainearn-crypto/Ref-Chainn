@@ -262,7 +262,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   };
 
   // Approve single deposit proof manually
-  const handleProcessDeposit = async (dId: string, action: "Approved" | "Rejected" | "Pending") => {
+  const handleProcessDeposit = async (dId: string, action: "Approved" | "Rejected" | "Pending" | "Processing") => {
     try {
       setLoading(true);
       const r = await fetch(`/api/admin/deposits/${dId}`, {
@@ -1055,66 +1055,54 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                           )}
                         </td>
                         <td className="p-4 flex gap-1 justify-center flex-wrap">
-                          {d.status === "Pending" && (
-                            <>
-                              <button
-                                id={`dep-approve-${d.id}`}
-                                onClick={() => handleProcessDeposit(d.id, "Approved")}
-                                className="p-1 px-2 bg-emerald-500/15 hover:bg-emerald-500 text-emerald-400 hover:text-white rounded text-[10px] font-bold transition-all"
-                                title="Approve deposit and allocate funds"
-                              >
-                                Approve
-                              </button>
-                              <button
-                                id={`dep-reject-${d.id}`}
-                                onClick={() => { handleProcessDeposit(d.id, "Rejected"); }}
-                                className="p-1 px-2 bg-rose-500/15 hover:bg-rose-500 text-rose-450 hover:text-white rounded text-[10px] font-bold transition-all"
-                                title="Reject deposit request"
-                              >
-                                Reject
-                              </button>
-                            </>
-                          )}
-                          {d.status === "Approved" && (
-                            <>
-                              <button
-                                id={`dep-pendify-${d.id}`}
-                                onClick={() => handleProcessDeposit(d.id, "Pending")}
-                                className="p-1 px-2 bg-amber-500/15 hover:bg-amber-500 text-amber-400 hover:text-white rounded text-[10px] font-bold transition-all"
-                                title="Reset deposit status to Pending and reverse user balance/commission payouts"
-                              >
-                                Reset Pending
-                              </button>
-                              <button
-                                id={`dep-reject-${d.id}`}
-                                onClick={() => handleProcessDeposit(d.id, "Rejected")}
-                                className="p-1 px-2 bg-rose-500/15 hover:bg-rose-500 text-rose-450 hover:text-white rounded text-[10px] font-bold transition-all"
-                                title="Reject deposit and reverse allocation"
-                              >
-                                Reject
-                              </button>
-                            </>
-                          )}
-                          {d.status === "Rejected" && (
-                            <>
-                              <button
-                                id={`dep-approve-${d.id}`}
-                                onClick={() => handleProcessDeposit(d.id, "Approved")}
-                                className="p-1 px-2 bg-emerald-500/15 hover:bg-emerald-500 text-emerald-450 hover:text-white rounded text-[10px] font-bold transition-all"
-                                title="Approve previously rejected deposit"
-                              >
-                                Approve
-                              </button>
-                              <button
-                                id={`dep-pendify-${d.id}`}
-                                onClick={() => handleProcessDeposit(d.id, "Pending")}
-                                className="p-1 px-2 bg-amber-500/15 hover:bg-amber-500 text-amber-400 hover:text-white rounded text-[10px] font-bold transition-all"
-                                title="Reset status to Pending"
-                              >
-                                Reset Pending
-                              </button>
-                            </>
-                          )}
+                          <button
+                            id={`dep-pending-${d.id}`}
+                            onClick={() => handleProcessDeposit(d.id, "Pending")}
+                            className={`p-1 px-2 rounded text-[10px] font-bold transition-all ${
+                              d.status === "Pending"
+                                ? "bg-amber-500 text-white cursor-default"
+                                : "bg-amber-500/10 hover:bg-amber-500 hover:text-white text-amber-400"
+                            }`}
+                            title="Set deposit status as Pending"
+                          >
+                            Pending
+                          </button>
+                          <button
+                            id={`dep-processing-${d.id}`}
+                            onClick={() => handleProcessDeposit(d.id, "Processing")}
+                            className={`p-1 px-2 rounded text-[10px] font-bold transition-all ${
+                              d.status === "Processing"
+                                ? "bg-indigo-500 text-white cursor-default"
+                                : "bg-indigo-500/10 hover:bg-indigo-500 hover:text-white text-indigo-400"
+                            }`}
+                            title="Set deposit status as Processing"
+                          >
+                            Processing
+                          </button>
+                          <button
+                            id={`dep-approve-${d.id}`}
+                            onClick={() => handleProcessDeposit(d.id, "Approved")}
+                            className={`p-1 px-2 rounded text-[10px] font-bold transition-all ${
+                              d.status === "Approved"
+                                ? "bg-emerald-500 text-white cursor-default"
+                                : "bg-emerald-500/10 hover:bg-emerald-500 hover:text-white text-emerald-400"
+                            }`}
+                            title="Approve deposit and allocate MLM commission payouts"
+                          >
+                            Approve
+                          </button>
+                          <button
+                            id={`dep-reject-${d.id}`}
+                            onClick={() => handleProcessDeposit(d.id, "Rejected")}
+                            className={`p-1 px-2 rounded text-[10px] font-bold transition-all ${
+                              d.status === "Rejected"
+                                ? "bg-rose-500 text-white cursor-default"
+                                : "bg-rose-500/10 hover:bg-rose-500 hover:text-white text-rose-400"
+                            }`}
+                            title="Reject deposit and cancel allocation"
+                          >
+                            Reject
+                          </button>
                         </td>
                       </tr>
                     ))}
@@ -1222,66 +1210,54 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                           }`}>{w.status}</span>
                         </td>
                         <td className="p-4 flex gap-1 justify-center flex-wrap">
-                          {w.status === "Pending" && (
-                            <>
-                              <button
-                                id={`with-approve-${w.id}`}
-                                onClick={() => handleProcessWithdrawal(w.id, "Completed")}
-                                className="p-1 px-2 bg-emerald-500/15 hover:bg-emerald-500 text-emerald-450 hover:text-white rounded text-[10px] font-bold transition-all"
-                                title="Approve and mark withdrawal request as completed/paid"
-                              >
-                                Approve & Pay
-                              </button>
-                              <button
-                                id={`with-reject-${w.id}`}
-                                onClick={() => handleProcessWithdrawal(w.id, "Rejected")}
-                                className="p-1 px-2 bg-rose-500/15 hover:bg-rose-500 text-rose-400 hover:text-white rounded text-[10px] font-bold transition-all"
-                                title="Reject and refund withdrawal amount to client balance"
-                              >
-                                Reject Refund
-                              </button>
-                            </>
-                          )}
-                          {(w.status === "Completed" || w.status === "Approved") && (
-                            <>
-                              <button
-                                id={`with-pendify-${w.id}`}
-                                onClick={() => handleProcessWithdrawal(w.id, "Pending")}
-                                className="p-1 px-2 bg-amber-500/15 hover:bg-amber-500 text-amber-400 hover:text-white rounded text-[10px] font-bold transition-all"
-                                title="Reset status to Pending"
-                              >
-                                Reset Pending
-                              </button>
-                              <button
-                                id={`with-reject-${w.id}`}
-                                onClick={() => handleProcessWithdrawal(w.id, "Rejected")}
-                                className="p-1 px-2 bg-rose-500/15 hover:bg-rose-500 text-rose-450 hover:text-white rounded text-[10px] font-bold transition-all"
-                                title="Reject withdrawal after completion"
-                              >
-                                Reject Refund
-                              </button>
-                            </>
-                          )}
-                          {w.status === "Rejected" && (
-                            <>
-                              <button
-                                id={`with-approve-${w.id}`}
-                                onClick={() => handleProcessWithdrawal(w.id, "Completed")}
-                                className="p-1 px-2 bg-emerald-500/15 hover:bg-emerald-500 text-emerald-450 hover:text-white rounded text-[10px] font-bold transition-all"
-                                title="Re-approve previous rejection"
-                              >
-                                Approve & Pay
-                              </button>
-                              <button
-                                id={`with-pendify-${w.id}`}
-                                onClick={() => handleProcessWithdrawal(w.id, "Pending")}
-                                className="p-1 px-2 bg-amber-500/15 hover:bg-amber-500 text-amber-400 hover:text-white rounded text-[10px] font-bold transition-all"
-                                title="Reset status to Pending and secure balance hold"
-                              >
-                                Reset Pending
-                              </button>
-                            </>
-                          )}
+                          <button
+                            id={`with-pending-${w.id}`}
+                            onClick={() => handleProcessWithdrawal(w.id, "Pending")}
+                            className={`p-1 px-2 rounded text-[10px] font-bold transition-all ${
+                              w.status === "Pending"
+                                ? "bg-amber-500 text-white cursor-default"
+                                : "bg-amber-500/10 hover:bg-amber-500 hover:text-white text-amber-400"
+                            }`}
+                            title="Set withdrawal status to Pending"
+                          >
+                            Pending
+                          </button>
+                          <button
+                            id={`with-processing-${w.id}`}
+                            onClick={() => handleProcessWithdrawal(w.id, "Processing")}
+                            className={`p-1 px-2 rounded text-[10px] font-bold transition-all ${
+                              w.status === "Processing"
+                                ? "bg-indigo-500 text-white cursor-default"
+                                : "bg-indigo-500/10 hover:bg-indigo-500 hover:text-white text-indigo-400"
+                            }`}
+                            title="Set withdrawal status to Processing"
+                          >
+                            Processing
+                          </button>
+                          <button
+                            id={`with-completed-${w.id}`}
+                            onClick={() => handleProcessWithdrawal(w.id, "Completed")}
+                            className={`p-1 px-2 rounded text-[10px] font-bold transition-all ${
+                              w.status === "Completed" || w.status === "Approved"
+                                ? "bg-emerald-500 text-white cursor-default"
+                                : "bg-emerald-500/10 hover:bg-emerald-500 hover:text-white text-emerald-400"
+                            }`}
+                            title="Set withdrawal status as Approved & Completed"
+                          >
+                            Approve
+                          </button>
+                          <button
+                            id={`with-rejected-${w.id}`}
+                            onClick={() => handleProcessWithdrawal(w.id, "Rejected")}
+                            className={`p-1 px-2 rounded text-[10px] font-bold transition-all ${
+                              w.status === "Rejected"
+                                ? "bg-rose-500 text-white cursor-default"
+                                : "bg-rose-500/10 hover:bg-rose-500 hover:text-white text-rose-400"
+                            }`}
+                            title="Set withdrawal status as Rejected and return funds to client"
+                          >
+                            Reject
+                          </button>
                         </td>
                       </tr>
                     ))}

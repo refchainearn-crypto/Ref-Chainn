@@ -175,8 +175,8 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
       triggerNotif("error", `Minimum cash out limit is NPR ${systemConfig.minWithdrawal}`);
       return;
     }
-    if (amountNum > user.walletBalance) {
-      triggerNotif("error", "Insufficient available funds in your RefChain wallet.");
+    if (user.walletBalance - 500 < amountNum) {
+      triggerNotif("error", `The first NPR 500 deposited/invested is locked in the pyramid system and cannot be withdrawn. Your maximum withdrawable balance is NPR ${Math.max(0, user.walletBalance - 500).toLocaleString()}.`);
       return;
     }
     if (!withdrawDetails) {
@@ -842,7 +842,10 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
                       />
                       <span className="absolute right-4 top-3.5 text-xs font-semibold opacity-40">NPR</span>
                     </div>
-                    <span className="text-[10px] opacity-50 block mt-1">Available balance: NPR {user.walletBalance.toLocaleString()}</span>
+                    <div className="flex flex-col gap-0.5 mt-1">
+                      <span className="text-[10px] opacity-50 block">Total balance: NPR {user.walletBalance.toLocaleString()}</span>
+                      <span className="text-[10px] text-amber-500 font-semibold block">Withdrawable balance (excluding locked first NPR 500): NPR {Math.max(0, user.walletBalance - 500).toLocaleString()}</span>
+                    </div>
                   </div>
 
                   <div>
